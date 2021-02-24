@@ -1,13 +1,25 @@
 package com.kupis.pizzeria;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class PizzeriaController {
 
-    @GetMapping("pizzeria/getMenu")
-    public String getPizzas(){
-            return "test";
+    private final PizzeriaService pizzeriaService;
+
+    @Autowired
+    public PizzeriaController(PizzeriaService pizzeriaService) {
+        this.pizzeriaService = pizzeriaService;
     }
+
+    @GetMapping("pizzeria/getPizzas")
+    public List<Pizza> getPizzas(){
+            return pizzeriaService.getPizzas();
+    }
+
+
 }
