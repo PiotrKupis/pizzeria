@@ -1,4 +1,4 @@
-package com.kupis.pizzeria;
+package com.kupis.pizzeria.pizza;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,22 +8,22 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class PizzeriaController {
+public class PizzaController {
 
-    private final PizzeriaService pizzeriaService;
+    private final PizzaService pizzaService;
 
     @Autowired
-    public PizzeriaController(PizzeriaService pizzeriaService) {
-        this.pizzeriaService = pizzeriaService;
+    public PizzaController(PizzaService pizzaService) {
+        this.pizzaService = pizzaService;
     }
 
     @GetMapping("pizzeria/getPizzas")
-    public List<Pizza> getPizzas(){
-            return pizzeriaService.getPizzas();
+    public List<Pizza> getPizzas() {
+        return pizzaService.getPizzas();
     }
 
     @GetMapping("pizzeria/getPizza")
     public Pizza getPizza(@RequestParam String pizzaName){
-        return pizzeriaService.getStudent(pizzaName);
+        return pizzaService.getStudent(pizzaName);
     }
 }

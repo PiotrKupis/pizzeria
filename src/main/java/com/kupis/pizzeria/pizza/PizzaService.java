@@ -1,4 +1,4 @@
-package com.kupis.pizzeria;
+package com.kupis.pizzeria.pizza;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -7,21 +7,21 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PizzeriaService {
+public class PizzaService {
 
-    private final PizzeriaRepository pizzeriaRepository;
+    private final PizzaRepository pizzaRepository;
 
     @Autowired
-    public PizzeriaService(PizzeriaRepository pizzeriaRepository) {
-        this.pizzeriaRepository = pizzeriaRepository;
+    public PizzaService(PizzaRepository pizzaRepository) {
+        this.pizzaRepository = pizzaRepository;
     }
 
-    public List<Pizza> getPizzas(){
-        return this.pizzeriaRepository.findAll();
+    public List<Pizza> getPizzas() {
+        return this.pizzaRepository.findAll();
     }
 
     public Pizza getStudent(String pizzaName) {
-        Optional<Pizza> pizza = pizzeriaRepository.getPizzaByName(pizzaName);
+        Optional<Pizza> pizza = pizzaRepository.findPizzaByName(pizzaName);
 
         if(pizza.isPresent())
             return pizza.get();

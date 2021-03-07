@@ -1,4 +1,4 @@
-package com.kupis.pizzeria;
+package com.kupis.pizzeria.pizza;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -21,7 +21,7 @@ public class Pizza {
             strategy = GenerationType.SEQUENCE,
             generator = "pizza_sequence"
     )
-    private Long id;
+    private Long pizzaId;
 
     @Column(nullable = false)
     private String name;
@@ -35,8 +35,8 @@ public class Pizza {
     public Pizza() {
     }
 
-    public Pizza(Long id, String name, String ingredients, BigDecimal price) {
-        this.id = id;
+    public Pizza(Long pizzaId, String name, String ingredients, BigDecimal price) {
+        this.pizzaId = pizzaId;
         this.name = name;
         this.ingredients = ingredients;
         this.price = price;
@@ -48,12 +48,12 @@ public class Pizza {
         this.price = price;
     }
 
-    public Long getId() {
-        return id;
+    public Long getPizzaId() {
+        return pizzaId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setPizzaId(Long pizzaId) {
+        this.pizzaId = pizzaId;
     }
 
     public String getName() {
@@ -83,7 +83,7 @@ public class Pizza {
     @Override
     public String toString() {
         return "Pizza{" +
-                "id=" + id +
+                "id=" + pizzaId +
                 ", name='" + name + '\'' +
                 ", ingredients='" + ingredients + '\'' +
                 ", price=" + price +
