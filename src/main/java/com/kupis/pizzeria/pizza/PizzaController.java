@@ -1,9 +1,7 @@
 package com.kupis.pizzeria.pizza;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,13 +15,38 @@ public class PizzaController {
         this.pizzaService = pizzaService;
     }
 
-    @GetMapping("pizzeria/getPizzas")
+    @GetMapping("pizzas")
     public List<Pizza> getPizzas() {
         return pizzaService.getPizzas();
     }
 
-    @GetMapping("pizzeria/getPizza")
-    public Pizza getPizza(@RequestParam String pizzaName){
-        return pizzaService.getStudent(pizzaName);
+    @GetMapping("pizza/{pizzaId}")
+    public Pizza getPizzaById(@PathVariable Long pizzaId) {
+        return pizzaService.getPizzaById(pizzaId);
+    }
+
+    @GetMapping("pizza")
+    public Pizza getPizzaByName(@RequestParam String pizzaName) {
+        return pizzaService.getPizzaByName(pizzaName);
+    }
+
+    @PostMapping("pizza")
+    public void addPizza(@RequestBody Pizza pizza) {
+        pizzaService.addPizza(pizza);
+    }
+
+    @DeleteMapping("pizza/{pizzaId}")
+    public void deletePizzaById(@PathVariable Long pizzaId) {
+        pizzaService.deletePizzaById(pizzaId);
+    }
+
+    @DeleteMapping("pizza")
+    public void deletePizzaByName(@RequestParam String pizzaName) {
+        pizzaService.deletePizzaByName(pizzaName);
+    }
+
+    @PutMapping("pizza/{pizzaId}")
+    public void updatePizza(@PathVariable Long pizzaId, @RequestBody Pizza updatedPizza) {
+        pizzaService.updatePizza(pizzaId, updatedPizza);
     }
 }

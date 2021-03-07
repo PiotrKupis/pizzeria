@@ -17,8 +17,11 @@ public class PizzeriaConfig {
         return args -> {
             Pizza margherita = new Pizza("Margherita", "ser, oregano", new BigDecimal(23));
             Pizza salame = new Pizza("Salame", "ser, oregano, salami, ogórek", new BigDecimal(28));
+            Pizza cappricciosa = new Pizza("Capricciosa", "ser, oregano, szynka, pieczarki", new BigDecimal(28));
+            Pizza pepperoni = new Pizza("Pepperoni", "ser, oregano, kabanos, szynka, peperoni", new BigDecimal("31.5"));
+            Pizza hawai = new Pizza("Hawai", "ser, oregano, szynka, ananas", new BigDecimal(28));
 
-            pizzaRepository.saveAll(List.of(margherita, salame));
+            pizzaRepository.saveAll(List.of(margherita, salame, cappricciosa, pepperoni, hawai));
         };
     }
 }
